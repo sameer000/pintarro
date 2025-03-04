@@ -1,6 +1,6 @@
 const carData = [
 {'make': 'Aston martin', 'model': 'DB 11', 'finalCategory': 'Xtra Large', 'category': 'Premium', 'segment': 'sedan'},
-{'make': 'AM', 'model': 'DB 11', 'finalCategory': 'Xtra Large', 'category': 'Premium', 'segment': 'sedan'},
+{'make': 'A M', 'model': 'DB 11', 'finalCategory': 'Xtra Large', 'category': 'Premium', 'segment': 'sedan'},
 {'make': 'Aston martin', 'model': 'DB11 V8', 'finalCategory': 'Xtra Large', 'category': 'Premium', 'segment': 'Sedan'},
 {'make': 'Aston martin', 'model': 'V12 Vantage', 'finalCategory': 'Large', 'category': 'Premium', 'segment': 'sedan'},
 {'make': 'Aston martin', 'model': 'DBS Superleggera Volante', 'finalCategory': 'Xtra Large', 'category': 'Premium', 'segment': 'Sedan'},
