@@ -1,5 +1,6 @@
 const carData = [
 {'make': 'Aston martin', 'model': 'DB 11', 'finalCategory': 'Xtra Large', 'category': 'Premium', 'segment': 'sedan'},
+{'make': 'Aston martin', 'model': 'DB Test', 'finalCategory': 'Large', 'category': 'Premium', 'segment': 'sedan'},
 {'make': 'Aston martin', 'model': 'DB11 V8', 'finalCategory': 'Xtra Large', 'category': 'Premium', 'segment': 'Sedan'},
 {'make': 'Aston martin', 'model': 'V12 Vantage', 'finalCategory': 'Large', 'category': 'Premium', 'segment': 'sedan'},
 {'make': 'Aston martin', 'model': 'DBS Superleggera Volante', 'finalCategory': 'Xtra Large', 'category': 'Premium', 'segment': 'Sedan'},
@@ -650,17 +651,17 @@ const filteredModels = carData.filter(car => car.make === selectedMake);
 
 // Populate and enable Car Model dropdown if models exist
 if (filteredModels.length > 0) {
-  filteredModels.forEach(car => {
-    const option = document.createElement("option");
-    option.value = car.model;
-    option.textContent = car.model;
-    carModelDropdown.appendChild(option);
-  });
-  carModelDropdown.disabled = false; // Enable dropdown
-} else {
+filteredModels.forEach(car => {
   const option = document.createElement("option");
-  option.textContent = "No models available";
+  option.value = car.model;
+  option.textContent = car.model;
   carModelDropdown.appendChild(option);
+});
+carModelDropdown.disabled = false; // Enable dropdown
+} else {
+const option = document.createElement("option");
+option.textContent = "No models available";
+carModelDropdown.appendChild(option);
 }
 });
 
@@ -677,9 +678,9 @@ const selectedModel = carModelDropdown.value;
 const carDetails = carData.find(car => car.make === selectedMake && car.model === selectedModel);
 
 if (carDetails) {
-  // Populate the fields with the car details
-  segmentField.value = carDetails.segment;   // Segment field
-  categoryField.value = carDetails.category; // Category field
-  classField.value = carDetails.finalCategory; // Final Category field
+// Populate the fields with the car details
+segmentField.value = carDetails.segment;   // Segment field
+categoryField.value = carDetails.category; // Category field
+classField.value = carDetails.finalCategory; // Final Category field
 }
 });
