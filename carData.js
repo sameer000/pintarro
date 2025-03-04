@@ -1,4 +1,5 @@
 const carData = [
+{'make': 'Aston martin', 'model': 'DB 11 Test', 'finalCategory': 'Xtra Large', 'category': 'Premium', 'segment': 'sedan'},
 {'make': 'Aston martin', 'model': 'DB 11', 'finalCategory': 'Xtra Large', 'category': 'Premium', 'segment': 'sedan'},
 {'make': 'Aston martin', 'model': 'DB11 V8', 'finalCategory': 'Xtra Large', 'category': 'Premium', 'segment': 'Sedan'},
 {'make': 'Aston martin', 'model': 'V12 Vantage', 'finalCategory': 'Large', 'category': 'Premium', 'segment': 'sedan'},
@@ -615,71 +616,71 @@ const carData = [
 {'make': 'Lexus', 'model': 'LM', 'finalCategory': 'LARGE', 'category': 'PREMIUM', 'segment': 'SUV'},
 ];
 
-  // DOM Elements 1
-    const carMakeDropdown = document.getElementById("car-mk");
-    const carModelDropdown = document.getElementById("car-md");
-    const segmentField = document.getElementById("segment");
-    const categoryField = document.getElementById("category");
-    const classField = document.getElementById("classs"); // Ensure this matches the input ID
-  
-    // Populate Car Make dropdown
-    const uniqueMakes = [...new Set(carData.map(car => car.make))];
-    uniqueMakes.forEach(make => {
-      const option = document.createElement("option");
-      option.value = make;
-      option.textContent = make;
-      carMakeDropdown.appendChild(option);
-    });
-  
-    // Event listener for Car Make dropdown
-    carMakeDropdown.addEventListener("change", () => {
-      console.log("Car Make dropdown value changed");
-  
-      // Clear and disable the Car Model dropdown
-      carModelDropdown.innerHTML = "<option value=''>Select Car Model</option>";
-      carModelDropdown.disabled = true;
-  
-      // Clear other fields
-      segmentField.value = "";
-      categoryField.value = "";
-      classField.value = "";
-  
-      // Filter models based on selected make
-      const selectedMake = carMakeDropdown.value;
-      const filteredModels = carData.filter(car => car.make === selectedMake);
-  
-      // Populate and enable Car Model dropdown if models exist
-      if (filteredModels.length > 0) {
-        filteredModels.forEach(car => {
-          const option = document.createElement("option");
-          option.value = car.model;
-          option.textContent = car.model;
-          carModelDropdown.appendChild(option);
-        });
-        carModelDropdown.disabled = false; // Enable dropdown
-      } else {
-        const option = document.createElement("option");
-        option.textContent = "No models available";
-        carModelDropdown.appendChild(option);
-      }
-    });
-  
-    // Event listener for Car Model dropdown
-    carModelDropdown.addEventListener("change", () => {
-      // Clear fields
-      segmentField.value = "";
-      categoryField.value = "";
-      classField.value = "";
-  
-      // Populate fields based on selected model
-      const selectedMake = carMakeDropdown.value;
-      const selectedModel = carModelDropdown.value;
-      const carDetails = carData.find(car => car.make === selectedMake && car.model === selectedModel);
-  
-      if (carDetails) {
-        // Populate the fields with the car details
-        segmentField.value = carDetails.segment;   // Segment field
-        categoryField.value = carDetails.category; // Category field
-        classField.value = carDetails.finalCategory; // Final Category field
-      }
-    });
+// DOM Elements 1
+const carMakeDropdown = document.getElementById("car-mk");
+const carModelDropdown = document.getElementById("car-md");
+const segmentField = document.getElementById("segment");
+const categoryField = document.getElementById("category");
+const classField = document.getElementById("classs"); // Ensure this matches the input ID
+
+// Populate Car Make dropdown
+const uniqueMakes = [...new Set(carData.map(car => car.make))];
+uniqueMakes.forEach(make => {
+const option = document.createElement("option");
+option.value = make;
+option.textContent = make;
+carMakeDropdown.appendChild(option);
+});
+
+// Event listener for Car Make dropdown
+carMakeDropdown.addEventListener("change", () => {
+console.log("Car Make dropdown value changed");
+
+// Clear and disable the Car Model dropdown
+carModelDropdown.innerHTML = "<option value=''>Select Car Model</option>";
+carModelDropdown.disabled = true;
+
+// Clear other fields
+segmentField.value = "";
+categoryField.value = "";
+classField.value = "";
+
+// Filter models based on selected make
+const selectedMake = carMakeDropdown.value;
+const filteredModels = carData.filter(car => car.make === selectedMake);
+
+// Populate and enable Car Model dropdown if models exist
+if (filteredModels.length > 0) {
+  filteredModels.forEach(car => {
+    const option = document.createElement("option");
+    option.value = car.model;
+    option.textContent = car.model;
+    carModelDropdown.appendChild(option);
+  });
+  carModelDropdown.disabled = false; // Enable dropdown
+} else {
+  const option = document.createElement("option");
+  option.textContent = "No models available";
+  carModelDropdown.appendChild(option);
+}
+});
+
+// Event listener for Car Model dropdown
+carModelDropdown.addEventListener("change", () => {
+// Clear fields
+segmentField.value = "";
+categoryField.value = "";
+classField.value = "";
+
+// Populate fields based on selected model
+const selectedMake = carMakeDropdown.value;
+const selectedModel = carModelDropdown.value;
+const carDetails = carData.find(car => car.make === selectedMake && car.model === selectedModel);
+
+if (carDetails) {
+  // Populate the fields with the car details
+  segmentField.value = carDetails.segment;   // Segment field
+  categoryField.value = carDetails.category; // Category field
+  classField.value = carDetails.finalCategory; // Final Category field
+}
+});
